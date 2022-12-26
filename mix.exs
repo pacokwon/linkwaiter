@@ -7,6 +7,7 @@ defmodule Linkwaiter.MixProject do
       version: "0.1.0",
       elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
+      config_path: "config/config.exs",
       deps: deps()
     ]
   end
