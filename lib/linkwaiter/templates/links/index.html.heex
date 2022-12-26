@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <%= if @current_user do %>
+      Welcome <%= @current_user %>
+      EEx is the <%= @adjective1 %> and the <%= @adjective2 %>!
+    <% else %>
+      <a href="/signin">Sign In</a>
+    <% end %>
+  </body>
+</html>
