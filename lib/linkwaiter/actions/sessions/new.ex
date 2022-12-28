@@ -3,6 +3,7 @@ defmodule Linkwaiter.Actions.Sessions.New do
   alias Linkwaiter.Views.Sessions
 
   def call(conn, _opts) do
-    render(conn, Sessions.new([]))
+    error? = Map.get(conn.query_params, "error")
+    render(conn, Sessions.new(error: error?))
   end
 end

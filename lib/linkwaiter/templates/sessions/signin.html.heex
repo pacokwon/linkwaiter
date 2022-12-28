@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Signin</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'>
+        <link rel='stylesheet' href='css/signin.css'>
+    </head>
+    <body>
+        <div class="login-form-container">
+            <form class="login-form" method="POST" action="/signin">
+                <h1>Login</h1>
+                <div class="content">
+                    <div class="input-field">
+                        <input type="text" name="username" placeholder="Username" autocomplete="nope">
+                    </div>
+                    <div class="input-field">
+                        <input type="password" name="password" placeholder="Password" autocomplete="new-password">
+                    </div>
+                    <%= if @error do %>
+                      <div class="wrong-credentials">Wrong Credentials!</div>
+                    <% end %>
+                </div>
+                <div class="action">
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

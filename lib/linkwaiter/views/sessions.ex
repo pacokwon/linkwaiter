@@ -1,5 +1,5 @@
 defmodule Linkwaiter.Views.Sessions do
   use Linkwaiter.View
 
-  deftemplate("sessions/new.html.heex", :new)
+  deftemplate("sessions/signin.html.heex", :new)
 end

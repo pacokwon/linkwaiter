@@ -2,6 +2,7 @@ defmodule Linkwaiter.Router do
   use Plug.Router
 
   plug Plug.Logger
+  plug Plug.Static, from: :linkwaiter, at: "/"
   plug :match
   plug Plug.Parsers, parsers: [:urlencoded, :multipart]
   plug :put_secret_key_base
@@ -11,8 +12,8 @@ defmodule Linkwaiter.Router do
 
   get "/", to: Linkwaiter.Actions.Links.Index
   get "/signin", to: Linkwaiter.Actions.Sessions.New
-  post "/links", to: Linkwaiter.Actions.Links.Create
   post "/signin", to: Linkwaiter.Actions.Sessions.Signin
+  post "/links", to: Linkwaiter.Actions.Links.Create
 
   match _ do
     send_resp(conn, 404, "Oops!")
