@@ -11,9 +11,9 @@ defmodule Linkwaiter.Router do
   plug :dispatch
 
   get "/", to: Linkwaiter.Actions.Links.Index
-  get "/signin", to: Linkwaiter.Actions.Sessions.New
+  get "/signin", to: Linkwaiter.Actions.Sessions.Index
   post "/signin", to: Linkwaiter.Actions.Sessions.Signin
-  post "/links", to: Linkwaiter.Actions.Links.Create
+  get "/links/create", to: Linkwaiter.Actions.Links.Create
 
   match _ do
     send_resp(conn, 404, "Oops!")

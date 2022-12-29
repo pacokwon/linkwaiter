@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create New Link</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'>
+        <link rel='stylesheet' href='/css/create.css'>
+    </head>
+    <body>
+        <ul>
+            <li><a href="/index">Home</a></li>
+            <li><a class="active" href="/create">Create</a></li>
+        </ul>
+        <div class="login-form-container">
+            <form class="login-form" method="post" action="/links/create">
+                <h2>Create New Link</h2>
+                <div class="content">
+                    <div class="input-field">
+                        <input type="text" name="category" list="categories" placeholder="Category"/>
+                        <datalist id="categories">
+                            <option>Volvo</option>
+                            <option>Saab</option>
+                            <option>Mercedes</option>
+                            <option>Audi</option>
+                        </datalist>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name="link" placeholder="Paste Link Here">
+                    </div>
+                    <div class="input-field">
+                        <textarea name="description" placeholder="Description" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="action">
+                    <button>Submit</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
