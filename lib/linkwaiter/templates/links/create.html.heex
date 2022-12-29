@@ -10,23 +10,25 @@
     <body>
         <ul>
             <li><a href="/index">Home</a></li>
-            <li><a class="active" href="/create">Create</a></li>
+            <li><a class="active" href="/links/create">Create</a></li>
         </ul>
         <div class="login-form-container">
             <form class="login-form" method="post" action="/links/create">
                 <h2>Create New Link</h2>
+                <%= if @success do %>
+                  <div class="success">Link successfully added!</div>
+                <% end %>
                 <div class="content">
                     <div class="input-field">
-                        <input type="text" name="category" list="categories" placeholder="Category"/>
+                        <input type="text" name="category" list="categories" placeholder="Category" autocompletion="off"/>
                         <datalist id="categories">
-                            <option>Volvo</option>
-                            <option>Saab</option>
-                            <option>Mercedes</option>
-                            <option>Audi</option>
+                        <%= for category <- @categories do %>
+                            <option><%= category %></option>
+                        <% end %>
                         </datalist>
                     </div>
                     <div class="input-field">
-                        <input type="text" name="link" placeholder="Paste Link Here">
+                        <input type="url" name="link" placeholder="Paste Link Here">
                     </div>
                     <div class="input-field">
                         <textarea name="description" placeholder="Description" rows="4"></textarea>

@@ -19,7 +19,6 @@ defmodule Linkwaiter.LinkStore do
 
   def add_link(new_link) do
     %{"link" => link, "description" => description, "category" => category} = new_link
-
     Agent.update(__MODULE__, fn state ->
       new_link = %{"link" => link, "description" => description, "date" => "#{Date.utc_today()}"}
       state |> Map.update(category, [new_link], &[new_link | &1])

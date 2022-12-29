@@ -3,6 +3,9 @@ defmodule Linkwaiter.Actions.Links.Create do
   alias Linkwaiter.Views.Links
 
   def call(conn, _opts) do
-    render(conn, Links.create([]))
+    categories = Linkwaiter.LinkStore.categories
+    success = Map.get(conn.query_params, "success")
+
+    render(conn, Links.create([categories: categories, success: success]))
   end
 end

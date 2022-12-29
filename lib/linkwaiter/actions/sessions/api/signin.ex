@@ -1,4 +1,4 @@
-defmodule Linkwaiter.Actions.Sessions.Signin do
+defmodule Linkwaiter.Actions.Sessions.Api.Signin do
   use Linkwaiter.Action
 
   def call(conn, _opts) do

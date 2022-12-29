@@ -12,8 +12,9 @@ defmodule Linkwaiter.Router do
 
   get "/", to: Linkwaiter.Actions.Links.Index
   get "/signin", to: Linkwaiter.Actions.Sessions.Index
-  post "/signin", to: Linkwaiter.Actions.Sessions.Signin
+  post "/signin", to: Linkwaiter.Actions.Sessions.Api.Signin
   get "/links/create", to: Linkwaiter.Actions.Links.Create
+  post "/links/create", to: Linkwaiter.Actions.Links.Api.Create
 
   match _ do
     send_resp(conn, 404, "Oops!")
