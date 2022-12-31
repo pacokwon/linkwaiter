@@ -25,6 +25,7 @@ defmodule Linkwaiter.MixProject do
     [
       {:plug_cowboy, "~> 2.0"},
       {:jason, "~> 1.3"},
+      {:elixir_uuid, git: "https://github.com/wingyplus/elixir-uuid", branch: "extra-apps"},
     ]
   end
 end
