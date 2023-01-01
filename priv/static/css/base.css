@@ -32,6 +32,7 @@ body > ul > li a {
 }
 
 body > ul > li a:hover {
+    color: white;
     background-color: #111;
 }
 

@@ -3,8 +3,6 @@ defmodule Linkwaiter.Actions.Links.Api.Delete do
 
   def call(conn, _opts) do
     %{"id" => id} = conn.path_params
-
-    IO.inspect(id)
     Linkwaiter.LinkStore.remove_link(id)
 
     conn

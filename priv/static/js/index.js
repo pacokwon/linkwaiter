@@ -1,3 +1,12 @@
+async function logout() {
+    await fetch("/logout", { method: "POST" })
+        .then(response => {
+            if (response.redirected) {
+                window.location.href = response.url;
+            }
+        });
+}
+
 async function deleteLink(id) {
     if (!confirm("Delete this link?"))
         return;

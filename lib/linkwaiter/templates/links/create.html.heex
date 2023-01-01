@@ -7,11 +7,13 @@
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'>
         <link rel='stylesheet' href='/css/base.css'>
         <link rel='stylesheet' href='/css/create.css'>
+        <script src="/js/index.js"></script>
     </head>
     <body>
         <ul>
-            <li><a href="/index">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a class="active" href="/links/create">Create</a></li>
+            <li><a href="#" onclick="return logout()">Logout</a></li>
         </ul>
         <div class="login-form-container">
             <form class="login-form" method="post" action="/links">
