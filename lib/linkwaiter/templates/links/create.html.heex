@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Create New Link</title>
+        <title>Linkwaiter - Create New Link</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'>
+        <link rel='stylesheet' href='/css/base.css'>
         <link rel='stylesheet' href='/css/create.css'>
     </head>
     <body>
@@ -13,7 +14,7 @@
             <li><a class="active" href="/links/create">Create</a></li>
         </ul>
         <div class="login-form-container">
-            <form class="login-form" method="post" action="/links/create">
+            <form class="login-form" method="post" action="/links">
                 <h2>Create New Link</h2>
                 <%= if @success do %>
                   <div class="success">Link successfully added!</div>

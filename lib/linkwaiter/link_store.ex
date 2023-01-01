@@ -13,6 +13,10 @@ defmodule Linkwaiter.LinkStore do
     Agent.get(__MODULE__, &Map.keys(&1))
   end
 
+  def get do
+    Agent.get(__MODULE__, &Function.identity/1)
+  end
+
   def get_json do
     Agent.get(__MODULE__, &Jason.encode!(&1, pretty: true))
   end
@@ -24,7 +28,7 @@ defmodule Linkwaiter.LinkStore do
 
         case rest do
           [] -> acc
-          _ -> Map.put(acc, category, entries)
+          _ -> Map.put(acc, category, rest)
         end
       end)
     end)

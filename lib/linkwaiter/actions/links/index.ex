@@ -4,6 +4,11 @@ defmodule Linkwaiter.Actions.Links.Index do
 
   def call(conn, _opts) do
     current_user = get_session(conn, :current_user)
-    render(conn, Links.index(adjective1: "coolest", adjective2: "fastest", current_user: current_user))
+    state = Linkwaiter.LinkStore.get()
+    IO.inspect(state)
+    case current_user do
+      nil -> redirect(conn, to: "/signin")
+      _ -> render(conn, Links.index(links: state))
+    end
   end
 end

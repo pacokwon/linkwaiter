@@ -14,7 +14,8 @@ defmodule Linkwaiter.Router do
   get "/signin", to: Linkwaiter.Actions.Sessions.Index
   post "/signin", to: Linkwaiter.Actions.Sessions.Api.Signin
   get "/links/create", to: Linkwaiter.Actions.Links.Create
-  post "/links/create", to: Linkwaiter.Actions.Links.Api.Create
+  post "/links", to: Linkwaiter.Actions.Links.Api.Create
+  delete "/links/:id", to: Linkwaiter.Actions.Links.Api.Delete
 
   match _ do
     send_resp(conn, 404, "Oops!")
