@@ -111,3 +111,16 @@
     margin-right: 30px;
   }
 }
+
+@media only screen and (max-height: 750px) {
+  .login-form {
+    margin-bottom: unset;
+  }
+}
+
+@media only screen and (max-height: 550px) {
+  .login-form-container {
+    height: unset;
+    margin-top: 20px;
+  }
+}
