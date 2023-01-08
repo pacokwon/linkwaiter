@@ -24,7 +24,7 @@ defmodule Linkwaiter.LinkStore do
   def remove_link(uuid) do
     Agent.update(__MODULE__, fn state ->
       Enum.reduce(state, %{}, fn {category, entries}, acc ->
-        {_, rest} = pop_in(entries, [Access.filter(&(&1["id"] == uuid))])
+        {_, rest} = pop_in(entries, [Access.filter(&(&1["uuid"] == uuid))])
 
         case rest do
           [] -> acc
@@ -37,7 +37,8 @@ defmodule Linkwaiter.LinkStore do
   end
 
   def add_link(new_link) do
-    %{"link" => link, "description" => description, "category" => category} = new_link
+    %{"link" => link, "description" => description, "category" => category, "alias" => alias} =
+      new_link
 
     Agent.update(__MODULE__, fn state ->
       uuid = UUID.uuid4(:hex)
@@ -46,7 +47,8 @@ defmodule Linkwaiter.LinkStore do
         "link" => link,
         "description" => description,
         "date" => "#{Date.utc_today()}",
-        "uuid" => uuid
+        "uuid" => uuid,
+        "alias" => alias,
       }
 
       state |> Map.update(category, [new_link], &[new_link | &1])

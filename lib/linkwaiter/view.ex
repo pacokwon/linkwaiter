@@ -7,7 +7,7 @@ defmodule Linkwaiter.View do
 
   @root_path "lib/linkwaiter/templates"
 
-  defmacro deftemplate(template_name, function_name )do
+  defmacro deftemplate(template_name, function_name)do
     template_path = Path.join(@root_path, template_name)
 
     quote do

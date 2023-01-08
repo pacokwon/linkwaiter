@@ -3,7 +3,7 @@ defmodule Linkwaiter.Actions.Links.Api.Create do
 
   def call(conn, _opts) do
     conn.params
-    |> Map.take(["link", "category", "description"])
+    |> Map.take(["link", "category", "description", "alias"])
     |> Linkwaiter.LinkStore.add_link()
 
     conn

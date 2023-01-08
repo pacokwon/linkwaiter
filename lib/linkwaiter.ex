@@ -1,18 +1,10 @@
 defmodule Linkwaiter do
-  @moduledoc """
-  Documentation for `Linkwaiter`.
-  """
+  def basepath do
+    Application.fetch_env!(:linkwaiter, :basepath)
+  end
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Linkwaiter.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  # NOTE: url must start with "/"
+  def put_basepath(url) do
+    "/" <> basepath() <> url
   end
 end

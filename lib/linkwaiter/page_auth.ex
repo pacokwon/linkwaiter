@@ -26,9 +26,11 @@ defmodule Linkwaiter.PageAuth do
 
   defp verify_request(conn) do
     current_user = get_session(conn, :current_user)
+    basepath = Linkwaiter.basepath()
+
     if current_user == nil do
       conn
-      |> put_resp_header("location", "/signin")
+      |> put_resp_header("location", "/#{basepath}/signin")
       |> put_resp_content_type("text/html")
       |> send_resp(302, "You are being redirected to /signin")
       |> halt()

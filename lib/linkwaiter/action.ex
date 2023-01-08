@@ -18,8 +18,10 @@ defmodule Linkwaiter.Action do
     end
 
     def redirect(conn, to: url) do
+      basepath = Application.fetch_env!(:linkwaiter, :basepath)
+
       conn
-      |> put_resp_header("location", url)
+      |> put_resp_header("location", "/" <> basepath <> url)
       |> put_resp_content_type("text/html")
       |> send_resp(302, "You are being redirected to #{url}")
     end

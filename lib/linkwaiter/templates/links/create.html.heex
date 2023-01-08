@@ -5,18 +5,18 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'>
-        <link rel='stylesheet' href='/css/base.css'>
-        <link rel='stylesheet' href='/css/create.css'>
-        <script src="/js/index.js"></script>
+        <link rel='stylesheet' href=<%= Linkwaiter.put_basepath("/css/base.css") %>>
+        <link rel='stylesheet' href=<%= Linkwaiter.put_basepath("/css/create.css") %>>
+        <script src=<%= Linkwaiter.put_basepath("/js/index.js") %>></script>
     </head>
     <body>
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a class="active" href="/links/create">Create</a></li>
-            <li><a href="#" onclick="return logout()">Logout</a></li>
+            <li><a href=<%= Linkwaiter.put_basepath("/") %>>Home</a></li>
+            <li><a class="active"href=<%= Linkwaiter.put_basepath("/links/create") %>>Create</a></li>
+            <li style="float: right"><a href="#" onclick="<%= "return logout('#{Linkwaiter.basepath}')"%>">Logout</a></li>
         </ul>
         <div class="login-form-container">
-            <form class="login-form" method="post" action="/links">
+            <form class="login-form" method="post" action=<%= Linkwaiter.put_basepath("/links") %>>
                 <h2>Create New Link</h2>
                 <%= if @success do %>
                   <div class="success">Link successfully added!</div>
@@ -32,6 +32,9 @@
                     </div>
                     <div class="input-field">
                         <input type="url" name="link" placeholder="Paste Link Here">
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name="alias" placeholder="Alias"/>
                     </div>
                     <div class="input-field">
                         <textarea name="description" placeholder="Description" rows="4"></textarea>
