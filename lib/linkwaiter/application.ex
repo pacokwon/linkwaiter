@@ -9,8 +9,13 @@ defmodule Linkwaiter.Application do
   @impl true
   def start(_type, _args) do
     store_file_path = Application.fetch_env!(:linkwaiter, :links_json_path)
+    ip = case Application.fetch_env!(:linkwaiter, :env) do
+      :dev -> {0, 0, 0, 0}
+      :prod -> {127, 0, 0, 1}
+    end
+
     children = [
-      {Plug.Cowboy, scheme: :http, plug: Linkwaiter.Router, options: [port: 5000]},
+      {Plug.Cowboy, scheme: :http, plug: Linkwaiter.Router, options: [ip: ip, port: 5000]},
       {Linkwaiter.LinkStore, path: store_file_path},
       {Task.Supervisor, name: Linkwaiter.TaskSupervisor}
     ]
