@@ -1,6 +1,7 @@
 # https://hexdocs.pm/elixir/1.12/Supervisor.html
 defmodule Linkwaiter.LinkStore do
   use Agent
+  require Logger
 
   def start_link(opts) do
     path = Keyword.get(opts, :path)
@@ -57,6 +58,14 @@ defmodule Linkwaiter.LinkStore do
     sync_fs()
   end
 
+  def reload_from_fs do
+    Agent.update(__MODULE__, fn _ ->
+      path = Application.fetch_env!(:linkwaiter, :links_json_path)
+      {:ok, contents} = File.read(path)
+      Jason.decode!(contents)
+    end)
+  end
+
   defp sync_fs do
     Task.Supervisor.start_child(Linkwaiter.TaskSupervisor, fn ->
       json = Linkwaiter.LinkStore.get_json()
@@ -70,11 +79,10 @@ defmodule Linkwaiter.LinkStore do
 
       System.cmd("git", [
         "commit",
+        "--no-verify",
         "-m",
         "[#{Calendar.strftime(DateTime.utc_now(), "%Y-%m-%d %H:%M:%S")}] Automated commit from linkwaiter"
       ])
-
-      System.cmd("git", ["push"])
     end)
   end
 end

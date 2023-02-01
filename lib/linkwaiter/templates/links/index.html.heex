@@ -18,41 +18,45 @@
         </ul>
         <section class="links-card-container">
             <div class="links-card">
+                <div class="button-belt">
+                    <button onclick="<%= "syncFs('#{Linkwaiter.basepath}')" %>">Sync</button>
+                    <button onclick="<%= "pushRepo('#{Linkwaiter.basepath}')" %>">Push</button>
+                </div>
                 <div class="table-responsive">
-                <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Category</th>
-                        <th scope="col">Link</th>
-                        <th scope="col">Alias</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <%= for {category, entries} <- @links, %{
-                    "date" => date,
-                    "description" => description,
-                    "uuid" => id,
-                    "link" => link,
-                    "alias" => alias
-                  } <- entries do %>
-                    <tr>
-                        <td><%= category %></td>
-                        <td>
-                          <a target="_blank" href=<%= link %>>Link</a>
-                        </td>
-                        <td><%= alias %></td>
-                        <td><%= description %></td>
-                        <td><%= date %></td>
-                        <td class="actions">
-                            <button onclick="<%= "deleteLink('#{Linkwaiter.basepath}', '#{id}')" %>">&#x1F5D1;</button>
-                        </td>
-                    </tr>
-                <% end %>
-                </tbody>
-              </table>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Category</th>
+                                <th scope="col">Link</th>
+                                <th scope="col">Alias</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <%= for {category, entries} <- @links, %{
+                            "date" => date,
+                            "description" => description,
+                            "uuid" => id,
+                            "link" => link,
+                            "alias" => alias
+                          } <- entries do %>
+                            <tr>
+                                <td><%= category %></td>
+                                <td>
+                                  <a target="_blank" href=<%= link %>>Link</a>
+                                </td>
+                                <td><%= alias %></td>
+                                <td><%= description %></td>
+                                <td><%= date %></td>
+                                <td class="actions">
+                                    <button onclick="<%= "deleteLink('#{Linkwaiter.basepath}', '#{id}')" %>">&#x1F5D1;</button>
+                                </td>
+                            </tr>
+                        <% end %>
+                        </tbody>
+                    </table>
               </div>
             </div>
         </section>

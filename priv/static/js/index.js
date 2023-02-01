@@ -16,3 +16,29 @@ async function deleteLink(basepath, id) {
 
     window.location.reload();
 }
+
+async function pushRepo(basepath) {
+    if (!confirm("Push changes to repository?"))
+        return;
+
+    const response = await fetch(`/${basepath}/links/push`, { method: "POST" })
+        .then(res => res.text());
+
+    if (response === "ok")
+        alert("Successfully Pushed!");
+    else
+        alert("Something's gone wrong...");
+}
+
+async function syncFs(basepath) {
+    if (!confirm("Sync links with server filesystem?"))
+        return;
+
+    const response = await fetch(`/${basepath}/links/sync`, { method: "POST" })
+        .then(res => res.text());
+
+    if (response === "ok")
+        window.location.reload();
+    else
+        alert("Something's gone wrong...");
+}

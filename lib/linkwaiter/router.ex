@@ -24,6 +24,8 @@ defmodule Linkwaiter.Router do
   post "/logout", to: Linkwaiter.Actions.Sessions.Api.Logout
   post "/signin", to: Linkwaiter.Actions.Sessions.Api.Signin
   delete "/links/:id", to: Linkwaiter.Actions.Links.Api.Delete
+  post "/links/push", to: Linkwaiter.Actions.Links.Api.Push
+  post "/links/sync", to: Linkwaiter.Actions.Links.Api.Sync
 
   match _ do
     send_resp(conn, 404, "Oops!")

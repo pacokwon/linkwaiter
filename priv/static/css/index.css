@@ -33,6 +33,18 @@
     color: red;
 }
 
+.button-belt {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.button-belt > button {
+    border: 0;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
 @media only screen and (max-width: 1200px) {
     .links-card {
         min-width: 700px;
