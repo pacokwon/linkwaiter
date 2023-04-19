@@ -3,9 +3,15 @@ defmodule Linkwaiter.Actions.Links.Create do
   alias Linkwaiter.Views.Links
 
   def call(conn, _opts) do
-    categories = Linkwaiter.LinkStore.categories
-    success = Map.get(conn.query_params, "success")
+    current_user = get_session(conn, :current_user)
 
-    render(conn, Links.create([categories: categories, success: success]))
+    case current_user do
+      nil -> redirect(conn, to: "/signin")
+      _ ->
+        categories = Linkwaiter.LinkStore.categories
+        success = Map.get(conn.query_params, "success")
+
+        render(conn, Links.create([categories: categories, success: success]))
+    end
   end
 end
