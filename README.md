@@ -19,7 +19,8 @@ config :linkwaiter,
     admin_username: "<Admin Username>",
     admin_password: "<Admin Password>",
     links_json_path: "<Path to links json file>",
-    blog_root: "<Path to blog root in local filesystem>"
+    blog_root: "<Path to blog root in local filesystem>",
+    basepath: "linkwaiter"
 ```
 
 Then, install dependencies:
